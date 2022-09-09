@@ -1,5 +1,3 @@
-// import DynamicComponent from "./DynamicComponent";
-// import { sbEditable } from "@storyblok/storyblok-editable";
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 
 const Page = ({ blok }) => (

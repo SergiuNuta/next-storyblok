@@ -14,7 +14,7 @@ const components = {
 };
 
 storyblokInit({
-  accessToken: process.env.SPACE_ACCES_TOKEN,
+  accessToken: process.env.storyblokPreviewToken,
   use: [apiPlugin],
   components
 })

@@ -1,7 +1,7 @@
 import StoryblokClient from 'storyblok-js-client'
 
 const Storyblok = new StoryblokClient({
-    accessToken: process.env.SPACE_ACCES_TOKEN,
+    accessToken: process.env.storyblokPreviewToken,
     cache: {
       clear: 'auto',
       type: 'memory'
