@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+
 const Navigation = () => {
   const [openMenu, setOpenMenu] = useState(false);
  
@@ -11,17 +12,21 @@ const Navigation = () => {
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <Link href="/">
               <a>
-                <span className="sr-only">Storyblok</span>
-                <Image
+                <span className="sr-only">SN</span>
+                {/* <Image
                   className="h-20 w-auto sm:h-10 hidden sm:block"
-                  src='https://a.storyblok.com/f/88751/251x53/0d3909fe96/storyblok-primary.png'
+                  src='https://a.storyblok.com/f/171187/251x53/270c296af7/storyblok-primary.png'
                   alt="Storyblok"
-                />
-                <Image
+                  width={251}
+                  height={53}
+                /> */}
+                {/* <Image
                   className="h-20 w-auto sm:h-10 sm:hidden"
-                  src='https://a.storyblok.com/f/88751/92x106/835caf912a/storyblok-logo.png'
+                  src='https://a.storyblok.com/f/171187/92x106/523a47537d/storyblok-logo.png'
                   alt="Storyblok"
-                />
+                  width={92}
+                  height={106}
+                /> */}
               </a>
             </Link>
           </div>
@@ -85,8 +90,10 @@ const Navigation = () => {
                 <div>
                   <Image
                     className="h-8 w-auto"
-                    src="https://a.storyblok.com/f/88751/92x106/835caf912a/storyblok-logo.png"
+                    src="https://a.storyblok.com/f/171187/92x106/523a47537d/storyblok-logo.png"
                     alt="Storyblok"
+                    width={92}
+                    height={106}
                   />
                 </div>
                 <div className="-mr-2">

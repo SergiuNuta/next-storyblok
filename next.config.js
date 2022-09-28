@@ -6,7 +6,10 @@ const nextConfig = {
     storyblokPreviewToken: process.env.STORYBLOK_PREVIEW_TOKEN,
     storyblokPublicToken: process.env.STORYBLOK_PUBLIC_TOKEN,
     storyblokPreviewSecretWord: process.env.STORYBLOK_PREVIEW__SECRET_TOKEN
-  }
+  },
+  images: {
+        domains: ['a.storyblok.com'],
+  },
 }
 
 module.exports = nextConfig

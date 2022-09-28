@@ -1,9 +1,12 @@
+import Navigation from "./Navigation";
+import Footer from "./Footer";
+ 
 const Layout = ({ children }) => (
-    <div>
-      <div className="max-w-5xl py-10 mx-auto">
-        {children}
-      </div>
-    </div>
-  )
-  
-  export default Layout
+  <div>
+    <Navigation/>
+      {children}
+    <Footer />
+  </div>
+);
+ 
+export default Layout;

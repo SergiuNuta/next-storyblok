@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Layout from "../components/Layout";
 import { useStoryblokState, getStoryblokApi, StoryblokComponent } from "@storyblok/react";
  
 export default function Page({ story }) {
@@ -12,10 +13,11 @@ export default function Page({ story }) {
       </Head>
  
       <header>
-        <h1>{story ? story.name : "My Site"}</h1>
+        {/* <h1>{story ? story.name : "My Site"}</h1> */}
       </header>
- 
+      <Layout>
       <StoryblokComponent blok={story.content} />
+      </Layout>
     </div>
   );
 }
