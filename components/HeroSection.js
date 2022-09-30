@@ -1,11 +1,11 @@
 import { storyblokEditable } from "@storyblok/react"
 
-const Teaser = ({blok}) => {
+const HeroSection = ({blok}) => {
     return (
-      <div className="bg-black">
+      <div className="bg-black text-white md:h-screen pb-96">
         <h2 className="font-serif text-3xl text-center" {...storyblokEditable(blok)}>{blok.headline}</h2>
       </div>
     )
   }
   
-  export default Teaser
+  export default HeroSection

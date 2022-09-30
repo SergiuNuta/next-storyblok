@@ -9,6 +9,7 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import Layout from '../components/Layout';
 import Slider from "../components/Slider";
+import HeroSection from '../components/HeroSection';
  
 const components = {
   feature: Feature,
@@ -18,7 +19,8 @@ const components = {
   navigation: Navigation,
   footer: Footer,
   layout: Layout,
-  slider: Slider
+  slider: Slider,
+  heroSection: HeroSection
 };
 
 storyblokInit({

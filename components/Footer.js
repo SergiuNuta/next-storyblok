@@ -1,5 +1,5 @@
 const Footer = () => (
-    <footer className="bg-white lg:absolute lg:bottom-0 block w-full" aria-labelledby="footer-heading">
+    <footer className="bg-white block w-full" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">Footer</h2>
       <div className="px-5 py-12 mx-auto bg-gray-50  sm:px-6 md:flex md:items-center md:justify-between lg:px-20">
         <div className="flex justify-center mb-8 space-x-6 md:order-last md:mb-0">
