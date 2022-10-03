@@ -51,11 +51,11 @@ const Slider = (blok) => {
 
   return (
     <div className="carousel w-full h-full" {...storyblokEditable(blok)}>
-      <div className="relative w-full overflow-hidden">
+      <div className="relative w-full md:h-1/2 overflow-hidden">
         <div className="flex absolute bottom-0 right-0">
           <button
             onClick={movePrev}
-            className="hover:bg-blue-900/75 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 mr-4 transition-all ease-in-out duration-300"
+            className="hover:scale-105 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 mr-4 transition-all ease-in-out duration-300"
             disabled={isDisabled('prev')}
           >
             <svg
@@ -76,7 +76,7 @@ const Slider = (blok) => {
           </button>
           <button
             onClick={moveNext}
-            className="hover:bg-blue-900/75 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
+            className="hover:scale-105 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
             disabled={isDisabled('next')}
           >
             <svg
@@ -101,27 +101,15 @@ const Slider = (blok) => {
           className="carousel-container relative flex gap-1 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0">
           {slide.map((resource, index) => {
             return (
-              <div key={index} className="carousel-item flex-col relative w-full h-96">
-                <h1 className='w-full block'>{resource.title}</h1>
-                <div className="relative w-full h-full snap-start pt-4 customShadow">
-                  {/* <a
-                    href={resource.image.filename}
-                    className="w-full block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0 rounded-2xl"
-                    style={{ backgroundImage: `url(${resource.image.filename || ''})` }}> */}
+              <div key={index} className="carousel-item flex-col relative w-full">
+                <h1 className='w-full block text-[4em]'>{resource.title}</h1>
+                <div className="relative w-full h-96 snap-start">
                   <Image
                     src={resource.image.filename || ''}
                     alt={resource.alt}
-                    className="w-full h-full aspect-square rounded-2xl"
+                    className="w-full aspect-square rounded-2xl"
                     layout='fill'
                   />
-                  {/* </a> */}
-                  {/* <a
-                    href={resource.image.filename}
-                    className="w-full aspect-square block absolute -top-4 left-0 transition-opacity duration-300 opacity-100 hover:opacity-100 z-10">
-                    <h3 className="text-black text-xl">
-                      {resource.title}
-                    </h3>
-                  </a> */}
                 </div>
               </div>
               
