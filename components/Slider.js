@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { storyblokEditable } from "@storyblok/react"
+import { PrevButton, NextButton } from './CarouselButtons';
 import Image from "next/image";
 
 const Slider = (blok) => {
@@ -51,8 +52,12 @@ const Slider = (blok) => {
 
   return (
     <div className="carousel w-full h-full" {...storyblokEditable(blok)}>
-      <div className="relative w-full md:h-1/2 overflow-hidden">
-        <div className="flex absolute bottom-0 right-0">
+      <div className="relative w-full h-full overflow-hidden">
+      <div className="flex absolute bg-gray-400 top-0 right-0">
+        <PrevButton onClick={movePrev} disabled={isDisabled('prev')} />
+        <NextButton onClick={moveNext} disabled={isDisabled('next')} />
+        </div>
+        {/* <div className="flex absolute bg-gray-400 top-0 right-0">
           <button
             onClick={movePrev}
             className="hover:scale-105 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 mr-4 transition-all ease-in-out duration-300"
@@ -95,22 +100,24 @@ const Slider = (blok) => {
             </svg>
             <span className="sr-only">Next</span>
           </button>
-        </div>
+        </div> */}
         <div
           ref={slider}
           className="carousel-container relative flex gap-1 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0">
           {slide.map((resource, index) => {
             return (
               <div key={index} className="carousel-item flex-col relative w-full">
-                <h1 className='w-full block text-[4em]'>{resource.title}</h1>
-                <div className="relative w-full h-96 snap-start">
+                <p className='w-full text-gray-400 block text-[2em]'>{resource.title}</p>
+                <div className="relative w-[500px] h-[500px] snap-start">
                   <Image
                     src={resource.image.filename || ''}
                     alt={resource.alt}
-                    className="w-full aspect-square rounded-2xl"
+                    className="w-full aspect-square grayscale"
                     layout='fill'
                   />
                 </div>
+                <p className='w-full text-gray-400 block text-[2em]'>skills: {resource.skills}</p>
+                <p className='w-full text-gray-400 block text-[2em]'>description: {resource.description}</p>
               </div>
               
             );
