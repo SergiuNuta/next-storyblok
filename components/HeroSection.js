@@ -2,7 +2,7 @@ import { storyblokEditable } from "@storyblok/react"
 
 const HeroSection = ({blok}) => {
     return (
-      <div className="bg-[#1e2142] text-white md:h-screen pb-96">
+      <div className="bg-[#242359] text-white md:h-screen">
         <h2 className="font-serif text-3xl text-center" {...storyblokEditable(blok)}>{blok.headline}</h2>
         <svg width={64} height={64} viewBox="0 0 64 64" className="text-[#114df1] home-header-logo animation-loaded" >
             <g fill="none" fillRule="evenodd">
