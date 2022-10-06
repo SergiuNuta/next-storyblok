@@ -51,20 +51,17 @@ const Slider = (blok) => {
   }, []);
 
   return (
-    <div className="carousel w-full h-full" {...storyblokEditable(blok)}>
-      <div className="relative w-full h-full overflow-hidden">
-        <h1 className='flex items-center justify-center text-5xl font-bold pb-5'>Works</h1>
-      {/* <div className="flex absolute bg-gray-400 top-0 right-0">
+    <div className='carousel grid grid-cols-[15%_70%_15%] grid-rows-[100px]'>
+      <h1 className='flex justify-center items-center text-5xl font-bold col-start-2 col-span-1'>Works</h1>
+      <div className='col-start-1 col-span-1 flex items-center justify-center h-[300px] md:h-[400px] xl:h-[500px] 2xl:h-[550px]'>
         <PrevButton onClick={movePrev} disabled={isDisabled('prev')} />
-        <NextButton onClick={moveNext} disabled={isDisabled('next')} />
-      </div> */}
-      <div
-          ref={slider}
-          className="carousel-container relative flex gap-1 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0">
-          {slide.map((resource, index) => {
+      </div>
+      <div ref={slider} className="carousel-container h-[660px] col-start-2 col-span-1 relative flex gap-1 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0">
+      {slide.map((resource, index) => {
             return (
               <div key={index} className="carousel-item flex-col relative w-full">
-                <div className="relative max-w-[600px] w-[70%] min-w-[400px] min-h-[400px] max-h-[600px] snap-start mx-auto">
+                <div className="relative w-full h-[300px] md:h-[400px] xl:h-[500px] 2xl:h-[550px] snap-start mx-auto">
+                  <p className='absolute z-10 top-5 left-[41%]'>{resource.title}</p>
                   <Image
                     src={resource.image.filename || ''}
                     alt={resource.alt}
@@ -72,7 +69,7 @@ const Slider = (blok) => {
                     layout='fill'
                   />
                 </div>
-                <div className='max-w-[600px] w-[70%] min-w-[400px] flex flex-col mx-auto'>
+                <div className='flex flex-col w-full'>
                 <p className='w-full text-gray-400 block pt-4 text-[1em]'>skills: {resource.skills}</p>
                 <p className='w-full text-gray-400 block text-[2em]'>{resource.description}</p>
                 </div>
@@ -80,11 +77,9 @@ const Slider = (blok) => {
               
             );
           })}
-        </div>
-        <div className="flex justify-between px-5 md:px-5 xl:px-10 w-full min-w-[375px] absolute top-[25%]">
-        <PrevButton onClick={movePrev} disabled={isDisabled('prev')} />
-        <NextButton onClick={moveNext} disabled={isDisabled('next')} />
-        </div>
+      </div>
+      <div className='col-start-3 col-span-1 flex items-center justify-center h-[300px] md:h-[400px] xl:h-[500px] 2xl:h-[550px]'>
+      <NextButton onClick={moveNext} disabled={isDisabled('next')} />
       </div>
     </div>
   );
