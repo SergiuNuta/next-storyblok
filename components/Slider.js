@@ -65,7 +65,7 @@ const Slider = (blok) => {
                   <Image
                     src={resource.image.filename || ''}
                     alt={resource.alt}
-                    className="w-full aspect-square grayscale"
+                    className="w-full aspect-square grayscale hover:grayscale-0 transition-grayscale duration-300"
                     layout='fill'
                   />
                 </div>

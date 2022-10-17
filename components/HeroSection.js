@@ -1,22 +1,49 @@
 import { storyblokEditable } from "@storyblok/react"
+import { useEffect, useState } from "react";
+import { render } from 'storyblok-rich-text-react-renderer';
 
-const HeroSection = ({blok}) => {
-    return (
-      <div className="bg-[#242359] text-white md:h-screen">
-        <h2 className="font-serif text-3xl text-center" {...storyblokEditable(blok)}>{blok.headline}</h2>
-        <svg width={64} height={64} viewBox="0 0 64 64" className="text-[#114df1] home-header-logo animation-loaded" >
-            <g fill="none" fillRule="evenodd">
-                <rect width={64} fill="transparent">
-                    <path 
-                    fill="#FFF" 
-                    fillRule="nonzero" 
-                    d="M12.5777832 26.6420201C19.3786865 26.6420201 23.7391602 22.7608817 23.7391602 16.8847656L23.7391602 0 17.1535889 0 17.1535889 16.25C17.1535889 19.296875 15.5385986 21.1286272 12.5957275 21.1286272 9.63491211 21.1286272 8.01992188 19.296875 8.01992188 16.25L8.01992188 0 1.43435059 0 1.43435059 16.8847656C1.43435059 22.7790179 5.83071289 26.6420201 12.5777832 26.6420201zM34.2365967 26.1704799L34.2365967 0 27.6510254 0 27.6510254 26.1704799 34.2365967 26.1704799zM1.75615234 38.5514323L1.75615234 31.5726376 0 31.5726376 0 38.5514323 1.75615234 38.5514323zM4.55068359 38.5514323L4.55068359 34.4792597 4.58417969 34.4792597 7.35957031 38.5514323 8.83339844 38.5514323 8.83339844 31.5726376 7.08203125 31.5726376 7.08203125 35.6012835 7.04853516 35.6012835 4.2875 31.5726376 2.79931641 31.5726376 2.79931641 38.5514323 4.55068359 38.5514323zM11.6327148 38.5514323L11.6327148 31.5726376 9.8765625 31.5726376 9.8765625 38.5514323 11.6327148 38.5514323zM16.0302734 38.5514323L16.0302734 32.999349 17.9347656 32.999349 17.9347656 31.5726376 12.3744141 31.5726376 12.3744141 32.999349 14.2789062 32.999349 14.2789062 38.5514323 16.0302734 38.5514323zM20.4326172 38.5514323L20.4326172 31.5726376 18.6764648 31.5726376 18.6764648 38.5514323 20.4326172 38.5514323zM22.9352539 38.5514323L23.365918 37.0183222 25.6197266 37.0183222 26.0503906 38.5514323 27.8926758 38.5514323 25.5670898 31.5726376 23.4185547 31.5726376 21.0929688 38.5514323 22.9352539 38.5514323zM25.2560547 35.7415365L23.7295898 35.7415365 24.4760742 33.0912388 24.5095703 33.0912388 25.2560547 35.7415365zM31.9074219 38.5514323L31.9074219 32.999349 33.8119141 32.999349 33.8119141 31.5726376 28.2515625 31.5726376 28.2515625 32.999349 30.1560547 32.999349 30.1560547 38.5514323 31.9074219 38.5514323zM36.3097656 38.5514323L36.3097656 31.5726376 34.5536133 31.5726376 34.5536133 38.5514323 36.3097656 38.5514323zM41.3963867 38.5514323L43.5832031 31.5726376 41.6165039 31.5726376 40.2958008 36.8200335 40.2623047 36.8200335 38.9368164 31.5726376 36.9701172 31.5726376 39.1569336 38.5514323 41.3963867 38.5514323zM48.9760742 38.5514323L48.9760742 37.124721 45.999707 37.124721 45.999707 35.7125186 48.7990234 35.7125186 48.7990234 34.3776972 45.999707 34.3776972 45.999707 32.999349 48.9760742 32.999349 48.9760742 31.5726376 44.2435547 31.5726376 44.2435547 38.5514323 48.9760742 38.5514323z" transform="translate(8 13)">     
-                    </path>
-                </rect>
-            </g>
-        </svg>
-      </div>
-    )
-  }
-  
-  export default HeroSection
+const HeroSection = ({ blok }) => {
+  let test = []
+  const subHeading = render(blok.subheading)
+  subHeading.map(t => {
+    Object.values(t.props).map(o => {
+      test.push(o[0])
+    })
+})
+
+  const [typedSubheading, setTypedSubheading] = useState('')
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setTypedSubheading(test[0].slice(0, typedSubheading.length + 1))
+    }, 100)
+    return () => clearTimeout(timeout)
+  }, [test, typedSubheading])
+  return (
+    <div className="bg-[#242359] w-full h-96 md:h-full flex flex-col text-white md:h-screen px-7 pt-9">
+      <h2 className="text-[2em] md:text-[4em] w-full" {...storyblokEditable(blok)}>{blok.headline}</h2>
+      <div className="text-[2em] md:text-[4em] blinking-cursor w-[75%]" {...storyblokEditable(blok)}>{typedSubheading}</div>
+    </div>
+  )
+}
+
+export default HeroSection
+
+//   .typed-out{
+//     overflow: hidden;
+//     border-right: .30em solid orange;
+//     border-radius: 4px;
+//     white-space: nowrap;
+//     animation:
+//       typing 1s steps(20, end) forwards,
+//       blinking 1.2s infinite;
+//     font-size: 1.6rem;
+//     width: 0;
+// }
+// @keyframes typing {
+//   from { width: 0 }
+//   to { width: 100% }
+// }
+// @keyframes blinking {
+//   from { border-color: transparent }
+//   to { border-color: green; }
+// }

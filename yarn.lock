@@ -1971,6 +1971,11 @@ storyblok-react@^0.1.2:
   resolved "https://registry.yarnpkg.com/storyblok-react/-/storyblok-react-0.1.2.tgz#798672e1111cec68dc487985b1fbba15129fc90d"
   integrity sha512-68KtSgkAT/0XZ9diz3wfoPl6xOt3WJmCv03qZOZUNPs1uDFh1FHF7P9OHt6TfMcxPrv3ldjTypkQXbFdT7JnvA==
 
+storyblok-rich-text-react-renderer@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/storyblok-rich-text-react-renderer/-/storyblok-rich-text-react-renderer-2.6.1.tgz#e19f319062d870eb4780deaaa2506659703046d1"
+  integrity sha512-8TJGoy7o9viysyylyxi7+ADYKslMHQXlqQYlect3g8gyGeNto9K2ILIyYL1szHP4Ljn0/Kp1EB6NMmHiTlE5xg==
+
 string.prototype.matchall@^4.0.7:
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/string.prototype.matchall/-/string.prototype.matchall-4.0.7.tgz#8e6ecb0d8a1fb1fda470d81acecb2dba057a481d"
