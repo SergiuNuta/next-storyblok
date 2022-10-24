@@ -1,49 +1,40 @@
 import { storyblokEditable } from "@storyblok/react"
 import { useEffect, useState } from "react";
-import { render } from 'storyblok-rich-text-react-renderer';
+import { motion } from 'framer-motion'
 
 const HeroSection = ({ blok }) => {
-  let test = []
-  const subHeading = render(blok.subheading)
-  subHeading.map(t => {
-    Object.values(t.props).map(o => {
-      test.push(o[0])
-    })
-})
 
+const subheading = blok.subheading
   const [typedSubheading, setTypedSubheading] = useState('')
   useEffect(() => {
+
     const timeout = setTimeout(() => {
-      setTypedSubheading(test[0].slice(0, typedSubheading.length + 1))
+      setTypedSubheading(subheading.slice(0, typedSubheading.length + 1))
     }, 100)
     return () => clearTimeout(timeout)
-  }, [test, typedSubheading])
+  }, [subheading, typedSubheading])
   return (
-    <div className="bg-[#242359] w-full h-96 md:h-full flex flex-col text-white md:h-screen px-7 pt-9">
-      <h2 className="text-[2em] md:text-[4em] w-full" {...storyblokEditable(blok)}>{blok.headline}</h2>
-      <div className="text-[2em] md:text-[4em] blinking-cursor w-[75%]" {...storyblokEditable(blok)}>{typedSubheading}</div>
+    <div className="bg-[#242359] w-full h-screen overflow-hidden flex flex-col items-center pt-40 text-white h-screen pt-9">
+      <h1 className="pl-5 md:pl-0 w-full opacity-50 text-[2em] md:text-[2em] md:w-[80%]" {...storyblokEditable(blok)}>{blok.headline}</h1>
+      <h2 className="pl-5 md:pl-0 text-[3em] md:text-[4em] blinking-cursor w-full md:w-[80%]" {...storyblokEditable(blok)}>{typedSubheading}</h2>
+      <motion.div
+      initial={{ opacity: 0}}
+      animate={{
+        scale: [1, 2, 2, 3, 1],
+        opacity: [0.1, 0.2, 0.4, 0.8, 0.1, 1.0],
+        borderRadius: ['20%', '20%', '50%', '80%', '20%']
+      }}
+      transition={{ duration: 2.5 }}
+      className="circleWrapper relative flex justify-center items-center z-10">
+        <div className="opacity-10 absolute border border-[white] flex justify-center items-center rounded-full h-[200px] w-[200px] animate-pulse"></div>
+        <div className="opacity-10 absolute border border-[white] flex justify-center items-center rounded-full h-[300px] w-[300px]"></div>
+        <div className="opacity-10 absolute border border-[white] flex justify-center items-center rounded-full h-[500px] w-[500px]"></div>
+        <div className="absolute border border-[#EAAA00] flex justify-center items-center rounded-full h-[650px] w-[650px] animate-pulse opacity-10"></div>
+        <div className="opacity-10 absolute border border-[white] flex justify-center items-center rounded-full h-[800px] w-[800px]"></div>
+        <div className="opacity-10 absolute border border-[white] flex justify-center items-center rounded-full h-[950px] w-[950px]"></div>
+      </motion.div>
     </div>
   )
 }
 
 export default HeroSection
-
-//   .typed-out{
-//     overflow: hidden;
-//     border-right: .30em solid orange;
-//     border-radius: 4px;
-//     white-space: nowrap;
-//     animation:
-//       typing 1s steps(20, end) forwards,
-//       blinking 1.2s infinite;
-//     font-size: 1.6rem;
-//     width: 0;
-// }
-// @keyframes typing {
-//   from { width: 0 }
-//   to { width: 100% }
-// }
-// @keyframes blinking {
-//   from { border-color: transparent }
-//   to { border-color: green; }
-// }

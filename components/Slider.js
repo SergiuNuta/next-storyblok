@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { storyblokEditable } from "@storyblok/react"
+import { motion } from 'framer-motion'
 import { PrevButton, NextButton } from './CarouselButtons';
 import Image from "next/image";
 
@@ -8,6 +9,12 @@ const Slider = (blok) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const slider = useRef(null);
   const slide = blok.blok.slides
+  const visible = { opacity: 1, y: 0, transition: { duration: 0.5 } };
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible
+};
   
   const movePrev = () => {
     if (currentIndex > 0) {
@@ -51,8 +58,18 @@ const Slider = (blok) => {
   }, []);
 
   return (
-    <div className='carousel grid grid-cols-[15%_70%_15%] grid-rows-[100px]'>
-      <h1 className='flex justify-center items-center text-5xl font-bold col-start-2 col-span-1'>Works</h1>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      exit={{ opacity: 0, transition: { duration: 1 } }}
+      variants={{ visible: { transition: { staggerChildren: 0.3 } } }}
+      className='carousel grid grid-cols-[15%_70%_15%] grid-rows-[100px]'>
+      <motion.h1
+      variants={{
+        hidden: { opacity: 0, y: -20 },
+        visible
+      }}
+      className='flex justify-center items-center text-5xl font-bold col-start-2 col-span-1'>Works</motion.h1>
       <div className='col-start-1 col-span-1 flex items-center justify-center h-[300px] md:h-[400px] xl:h-[500px] 2xl:h-[550px]'>
         <PrevButton onClick={movePrev} disabled={isDisabled('prev')} />
       </div>
@@ -61,7 +78,12 @@ const Slider = (blok) => {
             return (
               <div key={index} className="carousel-item flex-col relative w-full">
                 <div className="relative w-full h-[300px] md:h-[400px] xl:h-[500px] 2xl:h-[550px] snap-start mx-auto">
-                  <p className='absolute z-10 top-5 left-[41%]'>{resource.title}</p>
+                  <motion.p
+                  variants={{
+                    hidden: { opacity: 0, y: -20 },
+                    visible
+                  }}
+                  className='absolute z-10 top-5 left-[41%]'>{resource.title}</motion.p>
                   <Image
                     src={resource.image.filename || ''}
                     alt={resource.alt}
@@ -70,8 +92,18 @@ const Slider = (blok) => {
                   />
                 </div>
                 <div className='flex flex-col w-full'>
-                <p className='w-full text-gray-400 block pt-4 text-[1em]'>skills: {resource.skills}</p>
-                <p className='w-full text-gray-400 block text-[2em]'>{resource.description}</p>
+                <motion.p 
+                variants={{
+                  hidden: { opacity: 0, y: -20 },
+                  visible
+                }}
+                className='w-full text-gray-400 block pt-4 text-[1em]'>skills: {resource.skills}</motion.p>
+                <motion.p 
+                variants={{
+                  hidden: { opacity: 0, y: -20 },
+                  visible
+                }}
+                className='w-full text-gray-400 block text-[2em]'>{resource.description}</motion.p>
                 </div>
               </div>
               
@@ -81,8 +113,40 @@ const Slider = (blok) => {
       <div className='col-start-3 col-span-1 flex items-center justify-center h-[300px] md:h-[400px] xl:h-[500px] 2xl:h-[550px]'>
       <NextButton onClick={moveNext} disabled={isDisabled('next')} />
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 export default Slider;
+
+{/* <motion.article
+      initial="hidden"
+      animate="visible"
+      exit={{ opacity: 0, transition: { duration: 1 } }}
+      variants={{ visible: { transition: { staggerChildren: 0.3 } } }}
+    >
+      <motion.h1
+        variants={{
+          hidden: { opacity: 0, y: -20 },
+          visible
+        }}
+        style={
+          {
+            "--base-width": "24vw",
+            top: "-18vw",
+            letterSpacing: "-1.4vw",
+            x: "-50%"
+          } as any
+        }
+      >
+        Galleries
+      </motion.h1>
+      <ul>
+        <motion.li variants={itemVariants}>
+          <Link to="/amsterdam">Amsterdam Zuid nightwalk</Link>
+        </motion.li>
+        <motion.li variants={itemVariants}>
+          <Link to="/london">White lines of Canary Wharf</Link>
+        </motion.li>
+      </ul>
+    </motion.article> */}
