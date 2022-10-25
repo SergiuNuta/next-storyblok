@@ -77,17 +77,19 @@ const itemVariants = {
       {slide.map((resource, index) => {
             return (
               <div key={index} className="carousel-item flex-col relative w-full">
-                <div className="relative w-full h-[300px] md:h-[400px] xl:h-[500px] 2xl:h-[550px] snap-start mx-auto">
-                  <motion.p
+                <div className="relative w-full h-[300px] md:h-[400px] xl:h-[500px] 2xl:h-[550px] mx-auto">
+                  <motion.a
+                  href={resource.link}
+                  target='_blank'
                   variants={{
                     hidden: { opacity: 0, y: -20 },
                     visible
                   }}
-                  className='absolute z-10 top-5 left-[41%]'>{resource.title}</motion.p>
+                  className='bg-[#ececec] p-3 rounded absolute z-10 top-5 left-[40%] translate-x-[40%]'>{resource.title} &#x1F517;</motion.a>
                   <Image
                     src={resource.image.filename || ''}
                     alt={resource.alt}
-                    className="w-full aspect-square grayscale hover:grayscale-0 transition-grayscale duration-300"
+                    className=" object-cover w-full aspect-square grayscale hover:grayscale-0 transition-grayscale duration-300"
                     layout='fill'
                   />
                 </div>
@@ -103,7 +105,7 @@ const itemVariants = {
                   hidden: { opacity: 0, y: -20 },
                   visible
                 }}
-                className='w-full text-gray-400 block text-[2em]'>{resource.description}</motion.p>
+                className='w-full text-gray-400 block text-[1.5em]'>{resource.description}</motion.p>
                 </div>
               </div>
               
