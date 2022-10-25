@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 
 const Navigation = () => {
+  const [logoSrc, setLogoSrc] = useState('https://a.storyblok.com/f/171187/800x100/f4be8953e6/logo-anim-revers.gif')
   return (
     <div className="relative bg-white border-gray-100 grid grid-cols-1 lg:grid-cols-2">
       <div className="w-full mx-auto px-4 sm:px-6 bg-[#242359]">
@@ -11,11 +13,19 @@ const Navigation = () => {
               <a>
                 <span className="sr-only">Serghei Nuta</span>
                 <Image
-                  className="h-20 w-auto sm:h-10 sm:hidden"
-                  src='https://a.storyblok.com/f/171187/300x300/dd89de556d/logo.png'
-                  alt="Storyblok"
-                  width={50}
-                  height={50}
+                  src={logoSrc}
+                  className="object-contain"
+                  alt="logo name"
+                  priority
+                  width={250}
+                  height={35}
+                  objectFit
+                  onMouseEnter={() => {
+                    setLogoSrc('https://a.storyblok.com/f/171187/800x100/4053cc464c/logo-anim.gif')
+                  }}
+                  onMouseOut={() => {
+                    setLogoSrc('https://a.storyblok.com/f/171187/800x100/f4be8953e6/logo-anim-revers.gif')
+                  }}
                 />
               </a>
             </Link>
