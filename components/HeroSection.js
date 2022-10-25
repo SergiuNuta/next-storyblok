@@ -14,7 +14,7 @@ const subheading = blok.subheading
     return () => clearTimeout(timeout)
   }, [subheading, typedSubheading])
   return (
-    <div className="bg-[#242359] w-full h-screen overflow-hidden flex flex-col items-center pt-40 text-white h-screen pt-9">
+    <div className="bg-[#242359] w-full h-screen overflow-hidden flex flex-col items-center pt-48 text-white h-screen pt-9">
       <h1 className="pl-5 md:pl-0 w-full opacity-50 text-[2em] md:text-[2em] md:w-[80%]" {...storyblokEditable(blok)}>{blok.headline}</h1>
       <h2 className="pl-5 md:pl-0 text-[3em] md:text-[4em] blinking-cursor w-full md:w-[80%]" {...storyblokEditable(blok)}>{typedSubheading}</h2>
       <motion.div
