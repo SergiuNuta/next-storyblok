@@ -10,23 +10,9 @@ const Navigation = () => {
         <div className="flex justify-between items-center  pt-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <Link href="/">
-              <a>
+              <a className="logo-name text-white text-4xl">
+                SN
                 <span className="sr-only">Serghei Nuta</span>
-                <Image
-                  src={logoSrc}
-                  className="object-contain"
-                  alt="logo name"
-                  priority
-                  width={250}
-                  height={35}
-                  objectFit
-                  onMouseEnter={() => {
-                    setLogoSrc('https://a.storyblok.com/f/171187/800x100/4053cc464c/logo-anim.gif')
-                  }}
-                  onMouseOut={() => {
-                    setLogoSrc('https://a.storyblok.com/f/171187/800x100/f4be8953e6/logo-anim-revers.gif')
-                  }}
-                />
               </a>
             </Link>
           </div>
