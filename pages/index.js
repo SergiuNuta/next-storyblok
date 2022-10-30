@@ -8,7 +8,7 @@ export default function Home({ story, preview }) {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Serghei Nuta - Front-End Developer</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
