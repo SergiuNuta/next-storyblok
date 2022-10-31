@@ -73,7 +73,7 @@ const Slider = (blok) => {
       <div className='col-start-1 col-span-1 flex items-center justify-center h-[300px] md:h-[400px] xl:h-[500px] 2xl:h-[550px]'>
         <PrevButton onClick={movePrev} disabled={isDisabled('prev')} />
       </div>
-      <div ref={slider} className="carousel-container h-[660px] col-start-2 col-span-1 relative flex gap-1 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0">
+      <div ref={slider} className="carousel-container h-[660px] col-start-2 col-span-1 relative flex gap-1 overflow-hidden scroll-smooth snap-x snap-mandatory touch-auto z-0">
         {slide.map((resource, index) => {
           return (
             <div key={index} className="carousel-item flex-col relative w-full">
