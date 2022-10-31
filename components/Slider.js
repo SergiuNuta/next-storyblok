@@ -101,13 +101,13 @@ const Slider = (blok) => {
                     hidden: { opacity: 0, y: -20 },
                     visible
                   }}
-                  className='w-full text-gray-400 block pt-4 text-[1em]'>skills: {resource.skills}</motion.p>
+                  className='w-full block pt-4 text-[1em]'>skills: {resource.skills}</motion.p>
                 <motion.p
                   variants={{
                     hidden: { opacity: 0, y: -20 },
                     visible
                   }}
-                  className='w-full text-gray-400 block text-[1.5em]'>{resource.description}</motion.p>
+                  className='w-full block text-[1.5em]'>{resource.description}</motion.p>
               </div>
             </div>
 
