@@ -77,7 +77,7 @@ const Slider = (blok) => {
         {slide.map((resource, index) => {
           return (
             <div key={index} className="carousel-item flex-col relative w-full">
-              <div className="bg-[#ececec] relative w-full h-[300px] md:h-[400px] xl:h-[500px] 2xl:h-[550px]">
+              <div {...storyblokEditable(blok)} className="bg-[#ececec] relative w-full h-[300px] md:h-[400px] xl:h-[500px] 2xl:h-[550px]">
                 <motion.a
                   href={resource.link}
                   target='_blank'
@@ -92,6 +92,7 @@ const Slider = (blok) => {
                   alt={resource.alt}
                   className="slider-image hover:scale-105 object-contain w-full aspect-square grayscale hover:grayscale-0 transition-grayscale duration-300"
                   layout='fill'
+                  priority
                 />
               </div>
               <div className='flex flex-col w-full'>

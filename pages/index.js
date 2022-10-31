@@ -9,6 +9,10 @@ export default function Home({ story, preview }) {
     <div>
       <Head>
         <title>Serghei Nuta - Front-End Developer</title>
+        <meta 
+          name="description"
+          content="Front-End developer with industry experience in Reactjs/Vuejs"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
