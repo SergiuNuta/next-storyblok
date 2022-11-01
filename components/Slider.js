@@ -63,7 +63,7 @@ const Slider = (blok) => {
       animate="visible"
       exit={{ opacity: 0, transition: { duration: 1 } }}
       variants={{ visible: { transition: { staggerChildren: 0.3 } } }}
-      className='carousel grid grid-cols-[15%_70%_15%] grid-rows-[100px]'>
+      className='carousel grid md:grid-cols-[15%_70%_15%] grid-rows-[100px]'>
       <motion.h1
         variants={{
           hidden: { opacity: 0, y: -20 },
@@ -85,7 +85,7 @@ const Slider = (blok) => {
                     hidden: { opacity: 0, y: -20 },
                     visible
                   }}
-                  className='absolute z-10 top-3 xl:top-10 left-[30%] md:left-[40%] translate-x-[30%] md:translate-x-[40%]'>{resource.title} &#x1F517;
+                  className='bg-[#ececec] absolute z-10 top-3 xl:top-10 left-[35%] md:left-[40%] translate-x-[35%] md:translate-x-[40%]'>{resource.title} &#x1F517;
                 </motion.a>
                 <Image
                   src={resource.image.filename || ''}
@@ -101,13 +101,13 @@ const Slider = (blok) => {
                     hidden: { opacity: 0, y: -20 },
                     visible
                   }}
-                  className='w-full block pt-4 text-[1em]'>skills: {resource.skills}</motion.p>
+                  className='w-full block pt-4 px-4 md:px-0 text-[1em]'>skills: {resource.skills}</motion.p>
                 <motion.p
                   variants={{
                     hidden: { opacity: 0, y: -20 },
                     visible
                   }}
-                  className='w-full block text-[1.5em]'>{resource.description}</motion.p>
+                  className='w-full block px-4 md:px-0 text-[1.5em]'>{resource.description}</motion.p>
               </div>
             </div>
 
